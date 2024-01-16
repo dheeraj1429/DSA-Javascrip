@@ -233,4 +233,26 @@ function maxSubarraySum(arr, num) {
   return maxSum;
 }
 
-console.log(maxSubarraySum([2, 5, 3, 2, 8, 9, 1, 2, 10, 12, 1, 5], 3));
+// console.log(maxSubarraySum([2, 5, 3, 2, 8, 9, 1, 2, 10, 12, 1, 5], 3));
+
+function search(arr, num) {
+  let min = 0;
+  let max = arr.length - 1;
+
+  while (min <= max) {
+    let middle = Math.floor((min + max) / 2);
+    let currentElement = arr[middle];
+
+    if (currentElement < num) {
+      min = middle + 1;
+    } else if (currentElement > num) {
+      max = middle - 1;
+    } else {
+      return middle;
+    }
+  }
+
+  return -1;
+}
+
+console.log(search([1, 3, 5, 7, 9, 11, 13, 15, 16, 17], 11));
